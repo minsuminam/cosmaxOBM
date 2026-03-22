@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { Brain, Factory, FlaskConical, Lightbulb, Package, PenTool, ArrowRight, ChevronDown } from 'lucide-react';
 import React, { useRef, useState } from 'react';
+import { GeneratedImage } from './components/GeneratedImage';
 
 // --- Data ---
 export type Lang = 'ko' | 'en' | 'zh' | 'ja';
@@ -261,18 +262,18 @@ function WhatIsOBM({ currentT }: { currentT: any }) {
         <div className="relative h-[600px]">
           <FadeIn delay={0.2} className="absolute top-0 right-0 w-4/5 h-2/3 z-10">
             <div className="w-full h-full border-8 border-[#F8F9FA] shadow-2xl overflow-hidden bg-white p-2">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" 
-                alt="Team meeting" 
+              <GeneratedImage 
+                prompt="A high-quality, professional corporate photograph of a diverse team of experts and a client collaborating closely in a modern office. They are discussing brand planning and packaging design for a new cosmetic product. Warm lighting, photorealistic, highly detailed, symbolizing partnership and fast market entry."
+                alt="Brand Planning and Collaboration"
                 className="w-full h-full object-cover"
               />
             </div>
           </FadeIn>
           <FadeIn delay={0.4} className="absolute bottom-0 left-0 w-4/5 h-2/3 z-20">
             <div className="w-full h-full border-8 border-[#C1A68D] shadow-2xl overflow-hidden bg-white p-2">
-              <img 
-                src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" 
-                alt="Lab research" 
+              <GeneratedImage 
+                prompt="A high-quality, professional photograph of a modern cosmetic laboratory and production facility. Scientists and engineers working together on research, development, and manufacturing. Clean, bright, photorealistic, highly detailed, symbolizing end-to-end production and quality control."
+                alt="R&D and Manufacturing"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -295,10 +296,10 @@ function BuildingBrands({ currentT }: { currentT: any }) {
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 whitespace-pre-line">
               {currentT.buildingBrandsDesc}
             </p>
-            <div className="relative h-[400px] w-full border-l-8 border-b-8 border-[#C1A68D] p-4">
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" 
-                alt="Global Market Presentation" 
+            <div className="relative h-[400px] w-full border-l-8 border-b-8 border-[#C1A68D] p-4 bg-white">
+              <GeneratedImage 
+                prompt="A high-quality, professional corporate photograph representing a brand growth partnership. A diverse team of creative professionals and business strategists collaborating in a modern, bright, minimalist office. They are looking at design prototypes, marketing charts, and a global map, symbolizing product development and global market expansion. Warm lighting, photorealistic, highly detailed."
+                alt="Brand Growth Partnership"
                 className="w-full h-full object-cover"
               />
             </div>
