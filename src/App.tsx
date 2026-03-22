@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { Brain, Factory, FlaskConical, Lightbulb, Package, PenTool, ArrowRight, ChevronDown } from 'lucide-react';
 import React, { useRef, useState } from 'react';
 
@@ -153,85 +153,82 @@ function Hero() {
     mouseY.set(y);
   };
 
-  const letters = ["C", "O", "S", "M", "A", "X"];
+  const letters = ["C", "O", "S", "M", "Λ", "X"];
 
   return (
     <section 
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-[#FDFDFD]"
+      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#FAF9F7]"
       onMouseMove={handleMouseMove}
     >
-      {/* Parallax Background Scene (Recreating the uploaded image) */}
-      <motion.div 
-        style={{ x: smoothX, y: smoothY }}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-      >
-        {/* Left Window (Trees) */}
-        <div className="absolute left-0 top-0 bottom-0 w-[8%] min-w-[60px] border-r border-gray-200 overflow-hidden shadow-inner">
-          <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=400" alt="trees" className="w-full h-full object-cover opacity-90" />
-          <div className="absolute top-1/3 w-full h-1 bg-black/20"></div>
-          <div className="absolute top-2/3 w-full h-1 bg-black/20"></div>
-        </div>
-
-        {/* Right Dark Panel */}
-        <div className="absolute right-[5%] top-[30%] bottom-[15%] w-[6%] min-w-[50px] bg-[#1a1a1a] shadow-2xl border border-gray-800 flex flex-col">
-           <div className="w-full h-full bg-gradient-to-br from-white/10 to-transparent"></div>
-           <div className="absolute top-1/2 w-full h-px bg-white/20"></div>
-           <div className="absolute top-1/4 w-full h-px bg-white/20"></div>
-           <div className="absolute top-3/4 w-full h-px bg-white/20"></div>
-        </div>
-
-        {/* Diagonal Light Rays (Sunlight) */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-30"
+      {/* Diagonal Light/Shadow Rays */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-20%] left-[-10%] w-[150%] h-[150%] opacity-50"
              style={{
-               background: 'linear-gradient(115deg, transparent 20%, rgba(0,0,0,0.05) 20%, rgba(0,0,0,0.05) 40%, transparent 40%, transparent 60%, rgba(0,0,0,0.03) 60%, rgba(0,0,0,0.03) 80%, transparent 80%)',
-               filter: 'blur(10px)'
+               background: 'linear-gradient(115deg, transparent 20%, rgba(0,0,0,0.03) 20%, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 35%, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0.02) 40%, transparent 40%, transparent 55%, rgba(0,0,0,0.015) 55%, rgba(0,0,0,0.015) 60%, transparent 60%)',
+               filter: 'blur(6px)'
              }}
-        ></div>
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-50"
-             style={{
-               background: 'linear-gradient(115deg, transparent 10%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 30%, transparent 30%, transparent 50%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.6) 70%, transparent 70%)',
-               filter: 'blur(20px)'
-             }}
-        ></div>
+        />
+      </div>
 
-        {/* Marble Blocks at the bottom */}
-        <div className="absolute bottom-0 left-[10%] w-[18%] h-[12%] bg-gradient-to-t from-gray-200 to-white shadow-[-10px_-10px_30px_rgba(0,0,0,0.05)] border-t border-r border-gray-100"></div>
-        <div className="absolute bottom-0 left-[35%] w-[25%] h-[8%] bg-gradient-to-t from-gray-200 to-white shadow-[0_-10px_30px_rgba(0,0,0,0.05)] border-t border-x border-gray-100"></div>
-        <div className="absolute bottom-[5%] right-[20%] w-[12%] h-[18%] bg-gradient-to-t from-gray-200 to-white shadow-[10px_10px_30px_rgba(0,0,0,0.05)] border border-gray-100"></div>
-      </motion.div>
+      {/* Left Window (Trees) */}
+      <div className="absolute left-0 top-0 bottom-0 w-[4%] min-w-[40px] bg-gray-200 overflow-hidden border-r border-gray-300 z-0">
+        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=400" alt="trees" className="w-full h-full object-cover opacity-70" />
+        <div className="absolute top-1/3 w-full h-0.5 bg-black/30"></div>
+        <div className="absolute top-2/3 w-full h-0.5 bg-black/30"></div>
+      </div>
 
-      {/* Center Text and Logo */}
+      {/* Right Dark Panel */}
+      <div className="absolute right-[2%] top-[35%] bottom-[15%] w-[4%] min-w-[40px] bg-[#1a1a1a] overflow-hidden z-0">
+         <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=400" alt="reflection" className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
+         <div className="absolute top-1/4 w-full h-px bg-white/20"></div>
+         <div className="absolute top-1/2 w-full h-px bg-white/20"></div>
+         <div className="absolute top-3/4 w-full h-px bg-white/20"></div>
+      </div>
+
+      {/* Minimalist Marble Blocks (Parallax) */}
+      <motion.div style={{ x: useTransform(smoothX, v => v * -0.2), y: useTransform(smoothY, v => v * -0.2) }} className="absolute bottom-0 left-[6%] w-[12%] h-[10%] bg-[#F2F2F2] shadow-[-5px_-5px_15px_rgba(0,0,0,0.03)] border-t border-r border-white z-0" />
+      <motion.div style={{ x: useTransform(smoothX, v => v * -0.4), y: useTransform(smoothY, v => v * -0.4) }} className="absolute bottom-0 left-[22%] w-[18%] h-[8%] bg-[#EFEFEF] shadow-[-5px_-5px_15px_rgba(0,0,0,0.04)] border-t border-x border-white z-0" />
+      <motion.div style={{ x: useTransform(smoothX, v => v * -0.3), y: useTransform(smoothY, v => v * -0.3) }} className="absolute bottom-[2%] right-[22%] w-[8%] h-[12%] bg-[#F2F2F2] shadow-[5px_5px_15px_rgba(0,0,0,0.04)] border border-white z-0" />
+      <motion.div style={{ x: useTransform(smoothX, v => v * -0.5), y: useTransform(smoothY, v => v * -0.5) }} className="absolute bottom-0 right-[4%] w-[10%] h-[6%] bg-[#EBEBEB] shadow-[5px_5px_15px_rgba(0,0,0,0.03)] border-t border-l border-white z-0" />
+
+      {/* Center Vertical Text and Logo */}
       <motion.div 
-        style={{ y, opacity }}
-        className="relative z-10 flex flex-col items-center gap-4 mt-12"
+        style={{ 
+          y, 
+          opacity,
+          rotateX: useTransform(smoothY, v => v * -0.2),
+          rotateY: useTransform(smoothX, v => v * 0.2),
+        }}
+        className="relative z-10 flex flex-col items-center gap-6"
       >
-        <div className="flex flex-col items-center gap-4 text-4xl md:text-5xl font-bold text-[#111] tracking-widest">
+        <div className="flex flex-col items-center gap-3 text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-[0.2em]">
           {letters.map((letter, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.1, duration: 0.8, ease: "easeOut" }}
-              whileHover={{ scale: 1.3, color: "#C1A68D", x: i % 2 === 0 ? 15 : -15, rotate: i % 2 === 0 ? 5 : -5 }}
-              className="cursor-default transition-all duration-300 inline-block"
+              transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.15, color: "#E31837" }}
+              className="cursor-default transition-colors duration-300 inline-block"
             >
               {letter}
             </motion.span>
           ))}
         </div>
         
-        {/* Red Logo */}
+        {/* Accurate Cosmax Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 + letters.length * 0.1 + 0.2, duration: 0.8, type: "spring" }}
-          whileHover={{ rotate: 180, scale: 1.2 }}
+          transition={{ delay: 0.2 + letters.length * 0.1 + 0.2, duration: 0.8, type: "spring" }}
+          whileHover={{ scale: 1.1 }}
           className="mt-2 cursor-pointer"
         >
-          <svg width="30" height="50" viewBox="0 0 30 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="15" cy="15" r="10" stroke="#E31837" strokeWidth="2.5" fill="none"/>
-            <circle cx="15" cy="25" r="10" stroke="#E31837" strokeWidth="2.5" fill="none"/>
-            <circle cx="15" cy="35" r="10" stroke="#E31837" strokeWidth="2.5" fill="none"/>
+          <svg width="32" height="64" viewBox="0 0 32 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2 L16 8" stroke="#E31837" strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="16" cy="18" r="9" stroke="#E31837" strokeWidth="2" />
+            <circle cx="16" cy="30" r="9" stroke="#E31837" strokeWidth="2" />
+            <circle cx="16" cy="42" r="9" stroke="#E31837" strokeWidth="2" />
           </svg>
         </motion.div>
       </motion.div>
@@ -239,10 +236,10 @@ function Hero() {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 z-10 pointer-events-none"
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-300 z-10 pointer-events-none"
       >
-        <ChevronDown size={32} />
+        <ChevronDown size={28} />
       </motion.div>
     </section>
   );
@@ -254,7 +251,7 @@ function WhatIsOBM({ currentT }: { currentT: any }) {
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <FadeIn>
           <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-8 leading-tight">
-            What is<br />OBM?
+            What is OBM?
           </h2>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium whitespace-pre-line">
             {currentT.whatIsObmDesc}
@@ -307,37 +304,62 @@ function BuildingBrands({ currentT }: { currentT: any }) {
             </div>
           </FadeIn>
           
-          <FadeIn delay={0.3} className="flex flex-col items-center justify-center space-y-8">
-            <div className="flex gap-8 items-center">
-              <div className="w-40 h-40 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl font-bold text-[#0A2540] bg-white shadow-lg">
+          <FadeIn delay={0.3} className="flex flex-col items-center justify-center space-y-8 w-full">
+            <div className="flex gap-6 md:gap-12 items-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#0A2540] hover:text-white hover:shadow-2xl transition-all duration-300"
+              >
                 Branding
-              </div>
-              <div className="text-4xl font-light text-gray-400">+</div>
-              <div className="w-40 h-40 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl font-bold text-[#0A2540] bg-white shadow-lg">
+              </motion.div>
+              <div className="text-4xl font-light text-gray-300">+</div>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#C1A68D] hover:text-white hover:shadow-2xl transition-all duration-300"
+              >
                 R&I
-              </div>
+              </motion.div>
             </div>
             
-            <div className="flex gap-8 items-center">
-              <div className="w-40 h-40 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl font-bold text-[#0A2540] bg-white shadow-lg">
+            <div className="flex gap-6 md:gap-12 items-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#0A2540] hover:text-white hover:shadow-2xl transition-all duration-300"
+              >
                 Design
-              </div>
-              <div className="text-4xl font-light text-gray-400">+</div>
-              <div className="w-40 h-40 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl font-bold text-[#0A2540] bg-white shadow-lg">
+              </motion.div>
+              <div className="text-4xl font-light text-gray-300">+</div>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#C1A68D] hover:text-white hover:shadow-2xl transition-all duration-300"
+              >
                 Manufacturing
-              </div>
+              </motion.div>
             </div>
             
-            <div className="flex gap-16 text-[#0A2540]">
-              <ArrowRight size={48} className="rotate-90" />
-              <ArrowRight size={48} className="rotate-90" />
+            <div className="flex gap-24 md:gap-40 text-[#0A2540] py-4">
+              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+                <ArrowRight size={48} className="rotate-90 opacity-80" />
+              </motion.div>
+              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}>
+                <ArrowRight size={48} className="rotate-90 opacity-80" />
+              </motion.div>
             </div>
             
             <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
               whileHover={{ scale: 1.05 }}
-              className="w-56 h-56 rounded-full bg-[#0A2540] border-8 border-[#C1A68D] flex items-center justify-center text-3xl font-bold text-white shadow-2xl text-center leading-tight"
+              className="relative group cursor-pointer"
             >
-              OBM<br/>Service
+              <div className="absolute inset-0 rounded-full bg-[#C1A68D] blur-xl opacity-40 group-hover:opacity-80 transition-opacity duration-500 animate-pulse"></div>
+              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full bg-[#0A2540] border-8 border-[#C1A68D] flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-2xl text-center leading-tight overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-x-full group-hover:translate-x-full"></div>
+                <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">OBM<br/>Service</span>
+              </div>
             </motion.div>
           </FadeIn>
         </div>
