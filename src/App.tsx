@@ -466,7 +466,7 @@ function SuccessCases({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNlNWU3ZWIiLz48L3N2Zz4=')]">
       <FadeIn>
-        <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-16 bg-white inline-block pr-8">OBM Success Case</h2>
+        <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-16 inline-block pr-8">OBM Success Case</h2>
       </FadeIn>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
