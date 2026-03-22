@@ -1,30 +1,9 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Brain, Factory, FlaskConical, Lightbulb, Package, PenTool, ArrowRight, ChevronDown } from 'lucide-react';
-import { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 // --- Data ---
-const pillars = [
-  {
-    title: "Beauty from start to finish",
-    desc: "연구부터 제품 콘셉트, 완성된 브랜드에 이르기까지 전체 뷰티 파이프라인에 걸쳐 파트너를 지원",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    title: "Beyond product development",
-    desc: "제품 개발을 넘어 디자인과 상표 개발까지 아우르는 브랜드 구축 역량을 보유\n다양한 브랜딩 인벤토리를 지속적으로 확보",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    title: "The future of beauty",
-    desc: "연구와 혁신이 핵심\n제품의 90%가 자체 R&I 센터에서 개발되었고 항상 최적화, 개선, 창조를 위한 새로운 방법을 모색",
-    image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    title: "Your vision. Our technology.",
-    desc: "코스맥스에서만 특정적으로 제공하는 업계 최고의 포뮬러, 지속적으로 확장되는 코스맥스의 상표 기술 컬렉션을 통해 경쟁에 우위",
-    image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800"
-  }
-];
+export type Lang = 'ko' | 'en' | 'zh' | 'ja';
 
 const processSteps = [
   { id: '01', name: 'Strategy', icon: Lightbulb },
@@ -35,42 +14,114 @@ const processSteps = [
   { id: '06', name: 'Manufacturing', icon: Factory }
 ];
 
-const cases = [
-  {
-    name: "Emissary 73",
-    desc: ["국내 최대 호텔 체인 어매니티 브랜드 및 상품 개발", "글로벌 NO.1 향료사와 공동 개발한 프리미엄 퍼퓸드 어매니티"],
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600"
+const t = {
+  ko: {
+    whatIsObmDesc: "연구 개발부터 생산, 브랜드 기획, 패키징까지\n모든 과정을 고객과 함께하며\n쉽고 빠르게 시장에 진입하도록 지원",
+    buildingBrandsDesc: "브랜드 마케팅과 디자인 개발을 시작으로 상품 개발과\n글로벌 시장 진출까지 지원하는 브랜드 성장 파트너십",
+    processDesc: "COSMAX OBM 서비스는 브랜드명과 제품명, 비주얼 아이덴티티, 제형개발, 생산은 물론 마케팅 전략과 프로모션을 포함한 전체 프로세스를 체계적이고 정밀하게 설계해 드립니다",
+    viewCase: "View Case",
+    pillars: [
+      { title: "Beauty from start to finish", desc: "연구부터 제품 컨셉, 완성된 브랜드에 이르기까지 전체 뷰티 파이프라인에 걸친 파트너십", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
+      { title: "Beyond product development", desc: "제품 기획부터 패키지 디자인까지 아우를 수 있는 디자인 역량 보유.\n디자인 인벤토리 지속적 확보", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
+      { title: "The future of Beauty", desc: "상표권 포트폴리오를 확대하는 한편, 관련 서비스 고도화를 지속적으로 추진", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
+      { title: "Your vision. Our technology.", desc: "전 세계 1,100여 명의 연구 개발 인력으로 구성된 R&I 팀이 최적의 성분 조합에 대한 전문 지식을 바탕으로 포뮬러 개발", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
+    ],
+    cases: [
+      { name: "LOTTE HOTELS", subName: "Emissary.73 / Depaysmo", desc: ["국내 최대 호텔 체인 어매니티 브랜드 및 상품 개발", "글로벌 NO.1 향료사와 공동 개발한 프리미엄 퍼퓸드 어매니티"], image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600" },
+      { name: "Danmir (단미르)", subName: "", desc: ["국가유산청 궁능유적본부, 국가유산진흥원과 공동 연구 개발", "한국 전통 향기를 복원하는 코스맥스 특허기술 Scenteritage® 적용"], image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600" },
+      { name: "reii reii", subName: "", desc: ["글로벌 인지도를 보유한 박막례 할머니 IP 기반 브랜드 인큐베이팅", "세대·국경을 초월한 글로벌 크리에이터 콘텐츠로 디지털 플랫폼 기반 한국 전통 뷰티 레시피 확산"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
+      { name: "florevida", subName: "", desc: ["삼성물산 에버랜드의 뷰티 브랜드", "에버로즈의 향기와 생명력을 담은 라이프스타일 프래그런스 브랜드로, 바디&핸드&헤어 등 24SKU 출시"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
+      { name: "WONDERMIS", subName: "", desc: ["세계 4위 인구의 인니시장 내 파급력있는 메가 인플루언서 브랜드 런칭으로 코스맥스 기술기반 프리미엄 브랜드 기획", "Nagita Slavina (가수/배우) - 인스타 7610만, 유튜브 2620만, 틱톡 1530만 팔로워"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
+      { name: "PURCELL", subName: "", desc: ["코스맥스 소재랩과 함께 마이크로바이옴 독점 원료 개발하여, mL당 20억 마리 프로바이오틱스가 선사하는 장벽 초월 PIXCELL BIOM™ 원료 메인 소구"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
+    ]
   },
-  {
-    name: "florevida",
-    desc: ["삼성물산 에버랜드의 뷰티 브랜드", "에버로즈의 향기와 생명력을 담은 라이프스타일 프래그런스 브랜드"],
-    image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600"
+  en: {
+    whatIsObmDesc: "Supporting quick and easy market entry by partnering with customers\nthrough all processes from R&D to production, brand planning, and packaging.",
+    buildingBrandsDesc: "A brand growth partnership that supports everything from brand marketing\nand design development to product development and global market expansion.",
+    processDesc: "COSMAX OBM service systematically and precisely designs the entire process, including brand and product names, visual identity, formulation development, production, as well as marketing strategies and promotions.",
+    viewCase: "View Case",
+    pillars: [
+      { title: "Beauty from start to finish", desc: "A partnership spanning the entire beauty pipeline, from research to product concept and finished brand.", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
+      { title: "Beyond product development", desc: "Possessing design capabilities that encompass everything from product planning to package design.\nContinuously securing design inventory.", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
+      { title: "The future of Beauty", desc: "Continuously promoting the advancement of related services while expanding the trademark portfolio.", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
+      { title: "Your vision. Our technology.", desc: "The R&I team, consisting of over 1,100 R&D personnel worldwide, develops formulas based on expertise in optimal ingredient combinations.", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
+    ],
+    cases: [
+      { name: "LOTTE HOTELS", subName: "Emissary.73 / Depaysmo", desc: ["Development of amenity brands and products for Korea's largest hotel chain", "Premium perfumed amenities co-developed with the global No.1 fragrance company"], image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600" },
+      { name: "Danmir", subName: "", desc: ["Joint R&D with the Royal Palaces and Tombs Center and the Korea Heritage Agency", "Applied COSMAX's patented Scenteritage® technology to restore traditional Korean scents"], image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600" },
+      { name: "reii reii", subName: "", desc: ["Brand incubating based on the globally recognized Grandma Park Makrye IP", "Spreading traditional Korean beauty recipes based on digital platforms with global creator content transcending generations and borders"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
+      { name: "florevida", subName: "", desc: ["Samsung C&T Everland's beauty brand", "A lifestyle fragrance brand capturing the scent and vitality of Ever Rose, launching 24 SKUs including body, hand, and hair products"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
+      { name: "WONDERMIS", subName: "", desc: ["Planning a premium brand based on COSMAX technology by launching a mega-influencer brand with massive impact in the Indonesian market, the 4th most populous country", "Nagita Slavina (Singer/Actress) - 76.1M Instagram, 26.2M YouTube, 15.3M TikTok followers"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
+      { name: "PURCELL", subName: "", desc: ["Co-developed an exclusive microbiome ingredient with COSMAX Material Lab, featuring PIXCELL BIOM™ ingredient that delivers 2 billion probiotics per mL to transcend skin barriers"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
+    ]
   },
-  {
-    name: "PURCELL",
-    desc: ["코스맥스 소재랩과 함께 마이크로바이옴 독점 원료 개발", "고순도, 고기능, 심경증, 집념의 연구로 얻은 특별한 원료를 고순도로 처방"],
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600"
+  zh: {
+    whatIsObmDesc: "从研发到生产、品牌策划、包装，\n与客户携手共进，助力快速轻松进入市场。",
+    buildingBrandsDesc: "从品牌营销和设计开发开始，\n支持产品开发和进军全球市场的品牌成长合作伙伴关系。",
+    processDesc: "COSMAX OBM服务系统而精确地设计整个流程，包括品牌和产品名称、视觉识别、配方开发、生产，以及营销战略和促销活动。",
+    viewCase: "查看案例",
+    pillars: [
+      { title: "Beauty from start to finish", desc: "涵盖从研究到产品概念再到成品品牌的整个美容管道的合作伙伴关系。", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
+      { title: "Beyond product development", desc: "具备从产品策划到包装设计的全方位设计能力。\n持续确保设计库存。", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
+      { title: "The future of Beauty", desc: "在扩大商标组合的同时，持续推进相关服务的高度化。", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
+      { title: "Your vision. Our technology.", desc: "由全球1,100多名研发人员组成的R&I团队，基于对最佳成分组合的专业知识开发配方。", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
+    ],
+    cases: [
+      { name: "LOTTE HOTELS", subName: "Emissary.73 / Depaysmo", desc: ["韩国最大连锁酒店的洗浴用品品牌及产品开发", "与全球第一香精公司共同开发的高级香水洗浴用品"], image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600" },
+      { name: "Danmir", subName: "", desc: ["与国家遗产厅宫能遗迹本部、国家遗产振兴院共同研发", "应用COSMAX恢复韩国传统香气的专利技术Scenteritage®"], image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600" },
+      { name: "reii reii", subName: "", desc: ["基于具有全球知名度的朴末礼奶奶IP的品牌孵化", "通过超越世代和国界的全球创作者内容，在数字平台上推广韩国传统美容配方"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
+      { name: "florevida", subName: "", desc: ["三星物产爱宝乐园的美容品牌", "蕴含Ever Rose香气和生命力的生活方式香氛品牌，推出身体、手部、头发等24个SKU"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
+      { name: "WONDERMIS", subName: "", desc: ["通过在世界人口第四大国印尼市场推出具有影响力的超级网红品牌，策划基于COSMAX技术的高端品牌", "Nagita Slavina (歌手/演员) - Instagram 7610万，YouTube 2620万，TikTok 1530万粉丝"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
+      { name: "PURCELL", subName: "", desc: ["与COSMAX材料实验室共同开发独家微生物组原料，主打每毫升含20亿益生菌、超越屏障的PIXCELL BIOM™原料"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
+    ]
   },
-  {
-    name: "reii reii",
-    desc: ["글로벌 인지도를 보유한 박막례 할머니 IP 기반 브랜드 인큐베이팅", "세대·국경을 초월한 글로벌 크리에이터 콘텐츠"],
-    image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    name: "WONDERMIS",
-    desc: ["인니 최대 미디어 그룹 EMTEK과 JV 설립 성공", "해외 대형 IP 브랜드 인큐베이팅 역량 확보"],
-    image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600"
-  },
-  {
-    name: "단미르",
-    desc: ["국가유산청 궁능유적본부, 국가유산진흥원의 공동 연구 개발", "한국 전통 향기를 복원하는 코스맥스 특허기술 Scenteritage® 적용"],
-    image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600"
+  ja: {
+    whatIsObmDesc: "研究開発から生産、ブランド企画、パッケージングまで\nすべての過程をお客様と共にし、\n簡単かつ迅速な市場参入を支援します。",
+    buildingBrandsDesc: "ブランドマーケティングとデザイン開発をはじめ、\n商品開発からグローバル市場進出まで支援するブランド成長パートナーシップ。",
+    processDesc: "COSMAX OBMサービスは、ブランド名と製品名、ビジュアルアイデンティティ、剤形開発、生産はもちろん、マーケティング戦略とプロモーションを含むプロセス全体を体系的かつ精密に設計します。",
+    viewCase: "ケースを見る",
+    pillars: [
+      { title: "Beauty from start to finish", desc: "研究から製品コンセプト、完成したブランドに至るまで、ビューティーパイプライン全体にわたるパートナーシップ。", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
+      { title: "Beyond product development", desc: "製品企画からパッケージデザインまで網羅できるデザイン能力を保有。\nデザインインベントリを継続的に確保。", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
+      { title: "The future of Beauty", desc: "商標権ポートフォリオを拡大する一方、関連サービスの高度化を持続的に推進。", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
+      { title: "Your vision. Our technology.", desc: "全世界1,100人以上の研究開発陣で構成されたR&Iチームが、最適な成分の組み合わせに関する専門知識を基にフォーミュラを開発。", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
+    ],
+    cases: [
+      { name: "LOTTE HOTELS", subName: "Emissary.73 / Depaysmo", desc: ["国内最大のホテルチェーンのアメニティブランドおよび商品開発", "グローバルNO.1の香料会社と共同開発したプレミアムパフュームアメニティ"], image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600" },
+      { name: "Danmir", subName: "", desc: ["国家遺産庁宮陵遺跡本部、国家遺産振興院との共同研究開発", "韓国の伝統的な香りを復元するコスマックスの特許技術Scenteritage®を適用"], image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600" },
+      { name: "reii reii", subName: "", desc: ["グローバルな認知度を持つパク・マンレおばあちゃんのIPベースのブランドインキュベーティング", "世代・国境を越えたグローバルクリエイターコンテンツにより、デジタルプラットフォームベースで韓国の伝統的なビューティーレシピを拡散"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
+      { name: "florevida", subName: "", desc: ["サムスン物産エバーランドのビューティーブランド", "エバーローズの香りと生命力を込めたライフスタイルフレグランスブランドとして、ボディ＆ハンド＆ヘアなど24SKUを発売"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
+      { name: "WONDERMIS", subName: "", desc: ["世界第4位の人口を抱えるインドネシア市場で影響力のあるメガインフルエンサーブランドの立ち上げにより、コスマックスの技術に基づくプレミアムブランドを企画", "Nagita Slavina (歌手/俳優) - Instagram 7610万、YouTube 2620万、TikTok 1530万フォロワー"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
+      { name: "PURCELL", subName: "", desc: ["コスマックス素材ラボと共にマイクロバイオーム独占原料を開発し、1mLあたり20億個のプロバイオティクスがもたらす障壁超越PIXCELL BIOM™原料をメインに訴求"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
+    ]
   }
-];
+};
 
 // --- Components ---
 
-const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
+function LanguageSwitcher({ lang, setLang }: { lang: Lang, setLang: (l: Lang) => void }) {
+  const langs: { code: Lang, label: string }[] = [
+    { code: 'ko', label: 'Korean' },
+    { code: 'en', label: 'English' },
+    { code: 'zh', label: 'Chinese' },
+    { code: 'ja', label: 'Japanese' }
+  ];
+  return (
+    <div className="fixed top-4 right-4 z-50 flex gap-2 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-sm border border-gray-100">
+      {langs.map(l => (
+        <button
+          key={l.code}
+          onClick={() => setLang(l.code)}
+          className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${lang === l.code ? 'bg-[#0A2540] text-white' : 'text-gray-600 hover:bg-gray-100'}`}
+        >
+          {l.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string, key?: string | number }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -197,7 +248,7 @@ function Hero() {
   );
 }
 
-function WhatIsOBM() {
+function WhatIsOBM({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -205,10 +256,8 @@ function WhatIsOBM() {
           <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-8 leading-tight">
             What is<br />OBM?
           </h2>
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">
-            연구 개발부터 생산, 브랜드 기획, 패키징까지<br />
-            모든 과정을 고객과 함께하며<br />
-            쉽고 빠르게 시장에 진입하도록 지원
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium whitespace-pre-line">
+            {currentT.whatIsObmDesc}
           </p>
         </FadeIn>
         
@@ -237,7 +286,7 @@ function WhatIsOBM() {
   );
 }
 
-function BuildingBrands() {
+function BuildingBrands({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -246,9 +295,8 @@ function BuildingBrands() {
             <h2 className="text-4xl md:text-6xl font-bold text-[#0A2540] mb-8 leading-tight">
               Building Brands,<br />Expanding Markets
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12">
-              브랜드 마케팅과 디자인 개발을 시작으로 상품 개발과<br />
-              글로벌 시장 진출까지 지원하는 브랜드 성장 파트너십
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 whitespace-pre-line">
+              {currentT.buildingBrandsDesc}
             </p>
             <div className="relative h-[400px] w-full border-l-8 border-b-8 border-[#C1A68D] p-4">
               <img 
@@ -298,7 +346,7 @@ function BuildingBrands() {
   );
 }
 
-function WhatWeDo() {
+function WhatWeDo({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <FadeIn>
@@ -306,8 +354,8 @@ function WhatWeDo() {
       </FadeIn>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {pillars.map((pillar, idx) => (
-          <FadeIn key={idx} delay={idx * 0.15} className="group h-full">
+        {currentT.pillars.map((pillar: any, idx: number) => (
+          <FadeIn key={pillar.title} delay={idx * 0.15} className="group h-full">
             <div className="bg-white border-2 border-[#C1A68D] h-full flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
               {/* Decorative corners */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#C1A68D] m-1 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -339,7 +387,7 @@ function WhatWeDo() {
   );
 }
 
-function Process() {
+function Process({ currentT }: { currentT: any }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -382,8 +430,8 @@ function Process() {
       
       <div className="max-w-4xl mx-auto px-6 mt-16 text-center">
         <FadeIn delay={0.2}>
-          <p className="text-gray-700 leading-relaxed font-medium">
-            코스맥스는 고객의 브랜드명과 제품명, 비주얼 아이덴티티, 제형 개발, 생산은 물론 마케팅 전략과 프로모션을 포함한 전체 프로세스를 체계적이고 정밀하게 설계해 드립니다. 고객이 원하는 시장에서 제품과 브랜드를 빠르게 론칭하고 성공적으로 안착할 수 있도록 최선을 다해 지원합니다.
+          <p className="text-gray-700 leading-relaxed font-medium whitespace-pre-line">
+            {currentT.processDesc}
           </p>
         </FadeIn>
       </div>
@@ -391,7 +439,7 @@ function Process() {
   );
 }
 
-function SuccessCases() {
+function SuccessCases({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNlNWU3ZWIiLz48L3N2Zz4=')]">
       <FadeIn>
@@ -399,8 +447,8 @@ function SuccessCases() {
       </FadeIn>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {cases.map((item, idx) => (
-          <FadeIn key={idx} delay={idx * 0.1} className="group">
+        {currentT.cases.map((item: any, idx: number) => (
+          <FadeIn key={item.name} delay={idx * 0.1} className="group">
             <div className="bg-white p-4 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full flex flex-col">
               <div className="relative h-64 overflow-hidden mb-6 bg-gray-100">
                 <img 
@@ -409,15 +457,16 @@ function SuccessCases() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-bold tracking-widest uppercase border border-white px-4 py-2 backdrop-blur-sm">View Case</span>
+                  <span className="text-white font-bold tracking-widest uppercase border border-white px-4 py-2 backdrop-blur-sm">{currentT.viewCase}</span>
                 </div>
               </div>
               <div className="flex-grow">
                 <div className="inline-block bg-gray-100 px-4 py-2 rounded-sm mb-4">
                   <h3 className="text-xl font-bold text-[#0A2540]">{item.name}</h3>
+                  {item.subName && <p className="text-sm text-gray-500 mt-1">{item.subName}</p>}
                 </div>
                 <ul className="space-y-3">
-                  {item.desc.map((line, i) => (
+                  {item.desc.map((line: string, i: number) => (
                     <li key={i} className="flex items-start text-sm text-gray-600 leading-relaxed">
                       <span className="mr-2 mt-1.5 w-1 h-1 bg-[#C1A68D] rounded-full flex-shrink-0"></span>
                       {line}
@@ -451,14 +500,18 @@ function Footer() {
 }
 
 export default function App() {
+  const [lang, setLang] = useState<Lang>('ko');
+  const currentT = t[lang];
+
   return (
     <div className="min-h-screen bg-[#F8F9FA] font-sans selection:bg-[#C1A68D] selection:text-white">
+      <LanguageSwitcher lang={lang} setLang={setLang} />
       <Hero />
-      <WhatIsOBM />
-      <BuildingBrands />
-      <WhatWeDo />
-      <Process />
-      <SuccessCases />
+      <WhatIsOBM currentT={currentT} />
+      <BuildingBrands currentT={currentT} />
+      <WhatWeDo currentT={currentT} />
+      <Process currentT={currentT} />
+      <SuccessCases currentT={currentT} />
       <Footer />
     </div>
   );
