@@ -17,23 +17,23 @@ const processSteps = [
 
 const t = {
   ko: {
-    whatIsObmDesc: "연구 개발부터 생산, 브랜드 기획, 패키징까지\n모든 과정을 고객과 함께하며\n쉽고 빠르게 시장에 진입하도록 지원",
-    buildingBrandsDesc: "브랜드 마케팅과 디자인 개발을 시작으로 상품 개발과\n글로벌 시장 진출까지 지원하는 브랜드 성장 파트너십",
-    processDesc: "COSMAX OBM 서비스는 브랜드명과 제품명, 비주얼 아이덴티티, 제형개발, 생산은 물론 마케팅 전략과 프로모션을 포함한 전체 프로세스를 체계적이고 정밀하게 설계해 드립니다",
+    whatIsObmDesc: "브랜드 기획, 연구 개발부터 패키징,\n생산까지 모든 과정을 고객과 함께하며 쉽고\n빠르게 시장에 진입하도록 지원",
+    buildingBrandsDesc: "브랜드 방향성과 성장 전략에 부합하는 전담\n마케팅 조직을 구축하여, 브랜드 운영 전반에\n필요한 핵심 기능을 체계적으로 지원",
+    processDesc: "단순한 실행 조직을 넘어, 브랜드 전략 수립부터\n캠페인 기획, 콘텐츠 개발, 채널 운영, 성과 분석에\n이르기까지 전 과정을 유기적으로 연결하는\n맞춤형 마케팅 체계를 설계",
     viewCase: "View Case",
     pillars: [
-      { title: "Beauty from start to finish", desc: "연구부터 제품 컨셉, 완성된 브랜드에 이르기까지 전체 뷰티 파이프라인에 걸친 파트너십", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
-      { title: "Beyond product development", desc: "제품 기획부터 패키지 디자인까지 아우를 수 있는 디자인 역량 보유.\n디자인 인벤토리 지속적 확보", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
-      { title: "The future of Beauty", desc: "상표권 포트폴리오를 확대하는 한편, 관련 서비스 고도화를 지속적으로 추진", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
-      { title: "Your vision. Our technology.", desc: "전 세계 1,100여 명의 연구 개발 인력으로 구성된 R&I 팀이 최적의 성분 조합에 대한 전문 지식을 바탕으로 포뮬러 개발", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
+      { title: "Created by Cosmax.\nDesigned for you.", desc: "브랜드명과 제품명, 비주얼\n아이덴티티, 제형 개발, 생산은\n물론 마케팅 전략을 포함한 전체\n프로세스를 체계적이고\n정밀하게 설계", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" },
+      { title: "Beauty from\nstart to finish", desc: "연구부터 제품 콘셉트, 완성된\n브랜드에 이르기까지 전체 뷰티\n파이프라인에 걸쳐 파트너를\n지원", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" },
+      { title: "The future of Beauty", desc: "제품의 90%가 자체 R&I 센터\n에서 개발되었고 항상 최적화,\n개선, 창조를 위한 새로운\n방법을 모색", image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800" },
+      { title: "Your vision\nOur technology", desc: "코스맥스의 파트너는\n코스맥스에서만 독점적으로\n업계 최고의 포뮬러 제공", image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=800" }
     ],
     cases: [
       { name: "LOTTE HOTELS", subName: "Emissary.73 / Depaysmo", desc: ["국내 최대 호텔 체인 어매니티 브랜드 및 상품 개발", "글로벌 NO.1 향료사와 공동 개발한 프리미엄 퍼퓸드 어매니티"], image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=600" },
       { name: "Danmir (단미르)", subName: "", desc: ["국가유산청 궁능유적본부, 국가유산진흥원과 공동 연구 개발", "한국 전통 향기를 복원하는 코스맥스 특허기술 Scenteritage® 적용"], image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600" },
-      { name: "reii reii", subName: "", desc: ["글로벌 인지도를 보유한 박막례 할머니 IP 기반 브랜드 인큐베이팅", "세대·국경을 초월한 글로벌 크리에이터 콘텐츠로 디지털 플랫폼 기반 한국 전통 뷰티 레시피 확산"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
-      { name: "florevida", subName: "", desc: ["삼성물산 에버랜드의 뷰티 브랜드", "에버로즈의 향기와 생명력을 담은 라이프스타일 프래그런스 브랜드로, 바디&핸드&헤어 등 24SKU 출시"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
-      { name: "WONDERMIS", subName: "", desc: ["세계 4위 인구의 인니시장 내 파급력있는 메가 인플루언서 브랜드 런칭으로 코스맥스 기술기반 프리미엄 브랜드 기획", "Nagita Slavina (가수/배우) - 인스타 7610만, 유튜브 2620만, 틱톡 1530만 팔로워"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
-      { name: "PURCELL", subName: "", desc: ["코스맥스 소재랩과 함께 마이크로바이옴 독점 원료 개발하여, mL당 20억 마리 프로바이오틱스가 선사하는 장벽 초월 PIXCELL BIOM™ 원료 메인 소구"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
+      { name: "reii reii", subName: "", desc: ["글로벌 인지도를 보유한 박막례 할머니 IP 기반 브랜드 인큐베이팅", "한국적인 자연 원료와 전문 연구진의 솔루션을 담아낸 즐거움과 위트가 넘치는 스킨케어 브랜드"], image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" },
+      { name: "florevida", subName: "", desc: ["삼성물산 에버랜드의 뷰티 브랜드. 에버로즈의 향기와 생명력을 담은 라이프스타일 프래그런스 브랜드"], image: "https://images.unsplash.com/photo-1615397323223-999318859739?auto=format&fit=crop&q=80&w=600" },
+      { name: "WONDERMIS", subName: "", desc: ["코스맥스 특허 Starenol™ 독점 사용프리미엄 브랜드 기획", "세계 4위 인구의 인니시장 내 파급력있는 메가 인플루언서 브랜드 런칭"], image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=600" },
+      { name: "PURCELL", subName: "HIGH DOSE", desc: ["코스맥스 소재랩과 함께 마이크로바이옴 독점 원료 개발", "mL당 20억 마리 프로바이오틱스가 선사하는 장벽 초월 PIXCELL BIOM™ 원료 메인 소구"], image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" }
     ]
   },
   en: {
@@ -138,79 +138,91 @@ function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
   const opacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const bgY = useTransform(scrollY, [0, 1000], ['0%', '20%']);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
+  const spotX = useMotionValue(0);
+  const spotY = useMotionValue(0);
+
+  React.useEffect(() => {
+    spotX.set(window.innerWidth / 2);
+    spotY.set(window.innerHeight / 2);
+  }, [spotX, spotY]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY, currentTarget } = e;
-    const { width, height } = currentTarget.getBoundingClientRect();
-    const x = (clientX / width - 0.5) * 40;
-    const y = (clientY / height - 0.5) * 40;
-    mouseX.set(x);
-    mouseY.set(y);
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    mouseX.set((clientX / innerWidth) * 2 - 1);
+    mouseY.set((clientY / innerHeight) * 2 - 1);
+    spotX.set(clientX);
+    spotY.set(clientY);
   };
+
+  const springConfig = { damping: 30, stiffness: 100 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+  const smoothSpotX = useSpring(spotX, springConfig);
+  const smoothSpotY = useSpring(spotY, springConfig);
+
+  const imageX = useTransform(smoothMouseX, [-1, 1], ['-3%', '3%']);
+  const imageY = useTransform(smoothMouseY, [-1, 1], ['-3%', '3%']);
+
+  const spotlightBackground = useMotionTemplate`radial-gradient(circle 800px at ${smoothSpotX}px ${smoothSpotY}px, rgba(0,0,0,0), rgba(0,0,0,0.7))`;
 
   const letters = ["C", "O", "S", "M", "Λ", "X"];
 
   return (
     <section 
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#FAF9F7]"
+      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
       onMouseMove={handleMouseMove}
     >
-      {/* Diagonal Light/Shadow Rays */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[150%] h-[150%] opacity-50"
-             style={{
-               background: 'linear-gradient(115deg, transparent 20%, rgba(0,0,0,0.03) 20%, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 35%, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0.02) 40%, transparent 40%, transparent 55%, rgba(0,0,0,0.015) 55%, rgba(0,0,0,0.015) 60%, transparent 60%)',
-               filter: 'blur(6px)'
-             }}
-        />
-      </div>
+      {/* Background Image with Parallax & Mouse Interaction */}
+      <motion.div 
+        style={{ y: bgY }}
+        className="absolute inset-0 z-0 w-full h-[120%] -top-[10%]"
+      >
+        <motion.div
+          style={{ x: imageX, y: imageY }}
+          className="w-full h-full"
+        >
+          <motion.img 
+            initial={{ scale: 1.05 }}
+            animate={{ scale: 1.15 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+            src="/hero-bg.jpg" 
+            alt="Cosmax Showroom" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920";
+            }}
+          />
+        </motion.div>
+      </motion.div>
 
-      {/* Left Window (Trees) */}
-      <div className="absolute left-0 top-0 bottom-0 w-[4%] min-w-[40px] bg-gray-200 overflow-hidden border-r border-gray-300 z-0">
-        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=400" alt="trees" className="w-full h-full object-cover opacity-70" />
-        <div className="absolute top-1/3 w-full h-0.5 bg-black/30"></div>
-        <div className="absolute top-2/3 w-full h-0.5 bg-black/30"></div>
-      </div>
-
-      {/* Right Dark Panel */}
-      <div className="absolute right-[2%] top-[35%] bottom-[15%] w-[4%] min-w-[40px] bg-[#1a1a1a] overflow-hidden z-0">
-         <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=400" alt="reflection" className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
-         <div className="absolute top-1/4 w-full h-px bg-white/20"></div>
-         <div className="absolute top-1/2 w-full h-px bg-white/20"></div>
-         <div className="absolute top-3/4 w-full h-px bg-white/20"></div>
-      </div>
-
-      {/* Minimalist Marble Blocks (Parallax) */}
-      <motion.div style={{ x: useTransform(smoothX, v => v * -0.2), y: useTransform(smoothY, v => v * -0.2) }} className="absolute bottom-0 left-[6%] w-[12%] h-[10%] bg-[#F2F2F2] shadow-[-5px_-5px_15px_rgba(0,0,0,0.03)] border-t border-r border-white z-0" />
-      <motion.div style={{ x: useTransform(smoothX, v => v * -0.4), y: useTransform(smoothY, v => v * -0.4) }} className="absolute bottom-0 left-[22%] w-[18%] h-[8%] bg-[#EFEFEF] shadow-[-5px_-5px_15px_rgba(0,0,0,0.04)] border-t border-x border-white z-0" />
-      <motion.div style={{ x: useTransform(smoothX, v => v * -0.3), y: useTransform(smoothY, v => v * -0.3) }} className="absolute bottom-[2%] right-[22%] w-[8%] h-[12%] bg-[#F2F2F2] shadow-[5px_5px_15px_rgba(0,0,0,0.04)] border border-white z-0" />
-      <motion.div style={{ x: useTransform(smoothX, v => v * -0.5), y: useTransform(smoothY, v => v * -0.5) }} className="absolute bottom-0 right-[4%] w-[10%] h-[6%] bg-[#EBEBEB] shadow-[5px_5px_15px_rgba(0,0,0,0.03)] border-t border-l border-white z-0" />
+      {/* Interactive Spotlight Overlay */}
+      <motion.div 
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{ background: spotlightBackground }}
+      />
+      
+      {/* Dark gradient at bottom for smooth transition to next section */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#F8F9FA] to-transparent z-0 pointer-events-none"></div>
 
       {/* Center Vertical Text and Logo */}
       <motion.div 
-        style={{ 
-          y, 
-          opacity,
-          rotateX: useTransform(smoothY, v => v * -0.2),
-          rotateY: useTransform(smoothX, v => v * 0.2),
-        }}
+        style={{ y, opacity }}
         className="relative z-10 flex flex-col items-center gap-6"
       >
-        <div className="flex flex-col items-center gap-3 text-2xl md:text-3xl font-semibold text-[#1A1A1A] tracking-[0.2em]">
+        <div className="flex flex-col items-center gap-3 text-2xl md:text-3xl font-semibold text-white tracking-[0.2em]">
           {letters.map((letter, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: "easeOut" }}
-              whileHover={{ scale: 1.15, color: "#E31837" }}
-              className="cursor-default transition-colors duration-300 inline-block"
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: 0.2 + i * 0.1, duration: 1, ease: "easeOut" }}
+              whileHover={{ scale: 1.2, color: "#E31837", textShadow: "0px 0px 12px rgba(227,24,55,0.6)" }}
+              className="cursor-default transition-all duration-300 inline-block drop-shadow-lg"
             >
               {letter}
             </motion.span>
@@ -222,8 +234,8 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 + letters.length * 0.1 + 0.2, duration: 0.8, type: "spring" }}
-          whileHover={{ scale: 1.1 }}
-          className="mt-2 cursor-pointer"
+          whileHover={{ scale: 1.1, filter: "drop-shadow(0px 0px 10px rgba(227,24,55,0.5))" }}
+          className="mt-2 cursor-pointer drop-shadow-lg transition-all duration-300"
         >
           <svg width="32" height="64" viewBox="0 0 32 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 2 L16 8" stroke="#E31837" strokeWidth="2" strokeLinecap="round"/>
@@ -238,7 +250,7 @@ function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-300 z-10 pointer-events-none"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/80 z-10 pointer-events-none"
       >
         <ChevronDown size={28} />
       </motion.div>
@@ -254,9 +266,12 @@ function WhatIsOBM({ currentT }: { currentT: any }) {
           <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-8 leading-tight">
             What is OBM?
           </h2>
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium whitespace-pre-line">
-            {currentT.whatIsObmDesc}
-          </p>
+          <ul className="space-y-4 text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">
+            <li className="flex items-start">
+              <span className="mr-3 mt-2 w-2 h-2 bg-[#0A2540] rounded-full flex-shrink-0"></span>
+              <span>{currentT.whatIsObmDesc}</span>
+            </li>
+          </ul>
         </FadeIn>
         
         <div className="relative h-[600px]">
@@ -288,80 +303,73 @@ function BuildingBrands({ currentT }: { currentT: any }) {
   return (
     <section className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold text-[#0A2540] mb-8 leading-tight">
-              Building Brands,<br />Expanding Markets
-            </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 whitespace-pre-line">
-              {currentT.buildingBrandsDesc}
-            </p>
-            <div className="relative h-[400px] w-full border-l-8 border-b-8 border-[#C1A68D] p-4 bg-white">
+        <FadeIn>
+          <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-16">Our Expertise</h2>
+        </FadeIn>
+        
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          <FadeIn delay={0.1}>
+            <div className="bg-gray-100 p-8 h-full flex flex-col">
+              <h3 className="text-2xl font-bold text-[#0A2540] mb-4 text-center">
+                당신의 브랜드에 최적화된<br/>
+                <span className="text-[#E31837]">전담 기획 조직 구축</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed mt-4">
+                {currentT.buildingBrandsDesc}
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="bg-gray-100 p-8 h-full flex flex-col">
+              <h3 className="text-2xl font-bold text-[#0A2540] mb-4 text-center">
+                컨셉 기획부터 디자인, 상품개발까지<br/>
+                <span className="text-[#E31837]">전 과정 컨설팅</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed mt-4">
+                {currentT.processDesc}
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <div className="bg-gray-100 p-8 h-full flex flex-col">
+              <h3 className="text-2xl font-bold text-[#0A2540] mb-4 text-center">
+                브랜드 기획부터 권리화까지 연결하는<br/>
+                <span className="text-[#E31837]">통합 OBM 솔루션을 제공</span>
+              </h3>
+              <p className="text-gray-700 leading-relaxed mt-4">
+                디자인 기획과 상표권 개발 역량을 기반으로 브랜드의 차별화된 자산 구축을 지원하며, 다양한 레퍼런스 인벤토리를 활용해 완성도 높은 브랜드 개발 프로세스를 제공합니다.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <FadeIn delay={0.4}>
+            <div className="h-64 overflow-hidden">
               <GeneratedImage 
-                prompt="A high-quality, professional corporate photograph representing a brand growth partnership. A diverse team of creative professionals and business strategists collaborating in a modern, bright, minimalist office. They are looking at design prototypes, marketing charts, and a global map, symbolizing product development and global market expansion. Warm lighting, photorealistic, highly detailed."
+                prompt="A high-quality, professional corporate photograph representing a brand growth partnership. A diverse team of creative professionals and business strategists collaborating in a modern, bright, minimalist office."
                 alt="Brand Growth Partnership"
                 className="w-full h-full object-cover"
               />
             </div>
           </FadeIn>
-          
-          <FadeIn delay={0.3} className="flex flex-col items-center justify-center space-y-8 w-full">
-            <div className="flex gap-6 md:gap-12 items-center">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#0A2540] hover:text-white hover:shadow-2xl transition-all duration-300"
-              >
-                Branding
-              </motion.div>
-              <div className="text-4xl font-light text-gray-300">+</div>
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#C1A68D] hover:text-white hover:shadow-2xl transition-all duration-300"
-              >
-                R&I
-              </motion.div>
+          <FadeIn delay={0.5}>
+            <div className="h-64 overflow-hidden">
+              <GeneratedImage 
+                prompt="A high-quality photograph of a person using a laptop with AI graphics overlaid, representing data analysis and strategy."
+                alt="AI Strategy"
+                className="w-full h-full object-cover"
+              />
             </div>
-            
-            <div className="flex gap-6 md:gap-12 items-center">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#0A2540] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#0A2540] hover:text-white hover:shadow-2xl transition-all duration-300"
-              >
-                Design
-              </motion.div>
-              <div className="text-4xl font-light text-gray-300">+</div>
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#C1A68D] flex items-center justify-center text-xl md:text-2xl font-bold text-[#0A2540] bg-white shadow-lg cursor-pointer hover:bg-[#C1A68D] hover:text-white hover:shadow-2xl transition-all duration-300"
-              >
-                Manufacturing
-              </motion.div>
+          </FadeIn>
+          <FadeIn delay={0.6}>
+            <div className="h-64 overflow-hidden">
+              <GeneratedImage 
+                prompt="A high-quality photograph of a cosmetic product being tested or developed in a clean, modern setting."
+                alt="Product Development"
+                className="w-full h-full object-cover"
+              />
             </div>
-            
-            <div className="flex gap-24 md:gap-40 text-[#0A2540] py-4">
-              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
-                <ArrowRight size={48} className="rotate-90 opacity-80" />
-              </motion.div>
-              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}>
-                <ArrowRight size={48} className="rotate-90 opacity-80" />
-              </motion.div>
-            </div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
-              whileHover={{ scale: 1.05 }}
-              className="relative group cursor-pointer"
-            >
-              <div className="absolute inset-0 rounded-full bg-[#C1A68D] blur-xl opacity-40 group-hover:opacity-80 transition-opacity duration-500 animate-pulse"></div>
-              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full bg-[#0A2540] border-8 border-[#C1A68D] flex items-center justify-center text-3xl md:text-4xl font-bold text-white shadow-2xl text-center leading-tight overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-x-full group-hover:translate-x-full"></div>
-                <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">OBM<br/>Service</span>
-              </div>
-            </motion.div>
           </FadeIn>
         </div>
       </div>
@@ -423,8 +431,17 @@ function Process({ currentT }: { currentT: any }) {
     <section className="py-32 bg-[#FFFDF9] overflow-hidden border-y border-[#C1A68D]/30" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <FadeIn>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#0A2540] mb-4">Beauty from start to finish</h2>
-          <p className="text-xl text-gray-500">COSMAX OBM Service Overview</p>
+          <h2 className="text-4xl md:text-6xl font-bold text-[#0A2540] mb-4">What We Offer</h2>
+          <ul className="space-y-2 text-xl text-gray-700 mt-8">
+            <li className="flex items-start">
+              <span className="mr-2 mt-2 w-1.5 h-1.5 bg-[#0A2540] rounded-full flex-shrink-0"></span>
+              <span>OBM: 브랜딩 전문가가 처음부터 끝까지 전과정을 관리하며 시장에 출시할 수 있는 제품과 브랜드를 완벽하게 제작</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-2 mt-2 w-1.5 h-1.5 bg-[#0A2540] rounded-full flex-shrink-0"></span>
+              <span>ODM: 과학자가 만들고 소비자가 원하는 것을 기반으로 혁신적인 포뮬러와 최적화된 패키징 제공</span>
+            </li>
+          </ul>
         </FadeIn>
       </div>
       
@@ -449,14 +466,6 @@ function Process({ currentT }: { currentT: any }) {
             </div>
           ))}
         </motion.div>
-      </div>
-      
-      <div className="max-w-4xl mx-auto px-6 mt-16 text-center">
-        <FadeIn delay={0.2}>
-          <p className="text-gray-700 leading-relaxed font-medium whitespace-pre-line">
-            {currentT.processDesc}
-          </p>
-        </FadeIn>
       </div>
     </section>
   );
@@ -522,6 +531,82 @@ function Footer() {
   );
 }
 
+function OurSolutions() {
+  return (
+    <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <FadeIn>
+        <h2 className="text-5xl md:text-7xl font-bold text-[#0A2540] mb-8">Our Solutions</h2>
+        <ul className="space-y-2 text-xl text-gray-700 mb-16">
+          <li className="flex items-start">
+            <span className="mr-2 mt-2 w-1.5 h-1.5 bg-[#0A2540] rounded-full flex-shrink-0"></span>
+            <span>서비스를 '처음부터 함께 만드는 방식'과 '준비된 자산을 활용하는 방식' 중 선택</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-2 w-1.5 h-1.5 bg-[#0A2540] rounded-full flex-shrink-0"></span>
+            <span>고객사의 특성과 상황에 맞춘 선택으로 효율적 운영 가능</span>
+          </li>
+        </ul>
+      </FadeIn>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Build Service */}
+        <FadeIn delay={0.2}>
+          <div className="bg-gray-100 rounded-xl overflow-hidden h-full flex flex-col">
+            <div className="bg-gray-500 text-white text-center py-4 text-2xl font-bold">
+              Build(Full) Service
+            </div>
+            <div className="p-8 flex-grow flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-2 rounded-lg">의미</div>
+                <div className="flex-1 text-center bg-white py-2 rounded-lg shadow-sm">코스맥스 OBM과 처음부터 설계하는 방식</div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-6 rounded-lg">진행<br/>과정</div>
+                <div className="flex-1 text-center bg-white py-4 rounded-lg shadow-sm leading-loose">
+                  시장분석 → 브랜드 전략 → 네이밍 → 제형 개발 → 디자인<br/>개발 → 생산
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-6 rounded-lg">추천<br/>대상</div>
+                <div className="flex-1 text-center bg-white py-4 rounded-lg shadow-sm leading-loose">
+                  브랜드의 독창성이 중요한 고객사<br/>처음부터 전략적으로 선택하고 싶은 고객사
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Select Service */}
+        <FadeIn delay={0.4}>
+          <div className="bg-gray-100 rounded-xl overflow-hidden h-full flex flex-col">
+            <div className="bg-gray-500 text-white text-center py-4 text-2xl font-bold">
+              Select Service
+            </div>
+            <div className="p-8 flex-grow flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-2 rounded-lg md:opacity-0">의미</div>
+                <div className="flex-1 text-center bg-white py-2 rounded-lg shadow-sm">이미 축적된 자산을 활용해 빠르게 전개하는 방식</div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-6 rounded-lg md:opacity-0">진행<br/>과정</div>
+                <div className="flex-1 text-center bg-white py-4 rounded-lg shadow-sm leading-loose">
+                  인벤토리 선택 → 브랜드 구체화 → 제형 적용<br/>→ 디자인 보완 → 생산
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-20 font-bold text-gray-600 text-center bg-gray-200 py-6 rounded-lg md:opacity-0">추천<br/>대상</div>
+                <div className="flex-1 text-center bg-white py-4 rounded-lg shadow-sm leading-loose">
+                  시장 출시 속도가 중요한 고객사<br/>예산 효율성이 중요한 고객사
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [lang, setLang] = useState<Lang>('ko');
   const currentT = t[lang];
@@ -531,10 +616,11 @@ export default function App() {
       <LanguageSwitcher lang={lang} setLang={setLang} />
       <Hero />
       <WhatIsOBM currentT={currentT} />
-      <BuildingBrands currentT={currentT} />
       <WhatWeDo currentT={currentT} />
       <Process currentT={currentT} />
+      <BuildingBrands currentT={currentT} />
       <SuccessCases currentT={currentT} />
+      <OurSolutions />
       <Footer />
     </div>
   );
