@@ -1,18 +1,19 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { Brain, Factory, FlaskConical, Lightbulb, Package, PenTool, ArrowRight, ChevronDown } from 'lucide-react';
 import React, { useRef, useState } from 'react';
 import { GeneratedImage } from './components/GeneratedImage';
+import { CosmaxLogo } from './components/CosmaxLogo';
 
 // --- Data ---
 export type Lang = 'ko' | 'en' | 'zh' | 'ja';
 
 const processSteps = [
-  { id: '01', name: 'Strategy', icon: Lightbulb },
-  { id: '02', name: 'Brand concept', icon: Brain },
-  { id: '03', name: 'Design', icon: PenTool },
-  { id: '04', name: 'Formulation', icon: FlaskConical },
-  { id: '05', name: 'Packaging', icon: Package },
-  { id: '06', name: 'Manufacturing', icon: Factory }
+  { id: '01', name: 'Strategy', icon: Lightbulb, desc: "코스맥스는 브랜드와 제품을 위한 명확한 비전을 세우고, 소비자를 정의하며, 목표를 심층적으로 이해한 뒤, 강점을 극대화할 수 있는 브랜드 전략을 제안합니다.\n현재 주목해야 할 트렌드는 물론 고객의 강점을 살린 제품을 만들기 위해 필요한 각 단계별 절차를 안내하고, 각 고객의 특성에 맞춘 성공 경로를 설계합니다." },
+  { id: '02', name: 'Brand concept', icon: Brain, desc: "코스맥스는 전략적 사고를 통해 브랜드의 성격과 이름, 미적 요소와 서사를 포함한 브랜드만의 독창적인 콘셉트를 기획합니다.\n미래지향적이거나 레트로 하거나, 대담하거나, 실용적이거나, 어떤 콘셉트이든 브랜드가 구축될 토대를 마련하고 핵심적인 아이디어를 함께 구체화해 나갑니다." },
+  { id: '03', name: 'Design', icon: PenTool, desc: "코스맥스의 디자인팀은 아이디어를 현실로 만들어냅니다. 로고와 아이콘, 색상과 메시지의 톤&매너에 이르기까지 브랜드의 시각적·언어적 정체성을 설계하고 시장에서 돋보이도록 브랜드를 디자인합니다.\n디자인이 완료되면 이를 제품에 적용하고 출시할 수 있도록 지원합니다." },
+  { id: '04', name: 'Formulation', icon: FlaskConical, desc: "코스맥스는 업계 최고의 기술, 성분, 피부 전달체 등을 활용해 고객이 원하는 제품, 브랜드 및 사용자에게 적합한 제형을 개발합니다.\n전 세계 1,100여 명의 연구 개발 인력으로 구성된 R&I 팀이 최적의 성분 조합에 대한 전문 지식을 바탕으로 개발한 제형은 뛰어난 품질과 효과를 보장합니다." },
+  { id: '05', name: 'Packaging', icon: Package, desc: "코스맥스는 새로운 브랜드의 가치를 극대화하는 아름다운 패키지를 디자인하고 개발해 우수한 제품을 출시할 수 있도록 지원합니다.\n지속 가능한 소재부터 용기의 모양, 제품 라벨과 전달 방식에 이르기까지 모든 요소를 신중하게 고려합니다." },
+  { id: '06', name: 'Manufacturing', icon: Factory, desc: "글로벌 인프라와 효율적인 프로세스를 토대로 고객의 제품을 신속하게 대량생산합니다. 이는 제품 카테고리별로 특화되고 과학적으로 강화된 시설을 갖추고 있기 때문에 가능한 일입니다.\n코스맥스는 원료 공급업체의 방대한 네트워크, 특허받은 생산 기술, 업계 기준을 뛰어넘는 수많은 인증을 통해 모든 제품군에서 뛰어난 품질을 보장합니다." }
 ];
 
 const t = {
@@ -170,14 +171,12 @@ function Hero() {
 
   const spotlightBackground = useMotionTemplate`radial-gradient(circle 800px at ${smoothSpotX}px ${smoothSpotY}px, rgba(0,0,0,0), rgba(0,0,0,0.7))`;
 
-  const letters = ["C", "O", "S", "M", "Λ", "X"];
-
   return (
     <section 
       className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
       onMouseMove={handleMouseMove}
     >
-      {/* Background Image with Parallax & Mouse Interaction */}
+      {/* Background Video with Parallax */}
       <motion.div 
         style={{ y: bgY }}
         className="absolute inset-0 z-0 w-full h-[120%] -top-[10%]"
@@ -186,17 +185,15 @@ function Hero() {
           style={{ x: imageX, y: imageY }}
           className="w-full h-full"
         >
-          <motion.img 
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1.15 }}
-            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-            src="/hero-bg.jpg" 
-            alt="Cosmax Showroom" 
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920";
-            }}
-          />
+          >
+            <source src="https://a.storyblok.com/f/288782/x/54eb2e00e0/250808_cosmax-brand-film_for-web.mp4" type="video/mp4" />
+          </video>
         </motion.div>
       </motion.div>
 
@@ -214,35 +211,14 @@ function Hero() {
         style={{ y, opacity }}
         className="relative z-10 flex flex-col items-center gap-6"
       >
-        <div className="flex flex-col items-center gap-3 text-2xl md:text-3xl font-semibold text-white tracking-[0.2em]">
-          {letters.map((letter, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 0.2 + i * 0.1, duration: 1, ease: "easeOut" }}
-              whileHover={{ scale: 1.2, color: "#E31837", textShadow: "0px 0px 12px rgba(227,24,55,0.6)" }}
-              className="cursor-default transition-all duration-300 inline-block drop-shadow-lg"
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </div>
-        
-        {/* Accurate Cosmax Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 + letters.length * 0.1 + 0.2, duration: 0.8, type: "spring" }}
-          whileHover={{ scale: 1.1, filter: "drop-shadow(0px 0px 10px rgba(227,24,55,0.5))" }}
-          className="mt-2 cursor-pointer drop-shadow-lg transition-all duration-300"
+          transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+          whileHover={{ scale: 1.05, filter: "drop-shadow(0px 0px 10px rgba(255,255,255,0.5))" }}
+          className="cursor-pointer drop-shadow-lg transition-all duration-300 w-full max-w-xs md:max-w-md px-4"
         >
-          <svg width="32" height="64" viewBox="0 0 32 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 2 L16 8" stroke="#E31837" strokeWidth="2" strokeLinecap="round"/>
-            <circle cx="16" cy="18" r="9" stroke="#E31837" strokeWidth="2" />
-            <circle cx="16" cy="30" r="9" stroke="#E31837" strokeWidth="2" />
-            <circle cx="16" cy="42" r="9" stroke="#E31837" strokeWidth="2" />
-          </svg>
+          <CosmaxLogo className="w-full h-auto" textColor="#FFFFFF" />
         </motion.div>
       </motion.div>
       
@@ -420,6 +396,7 @@ function WhatWeDo({ currentT }: { currentT: any }) {
 
 function Process({ currentT }: { currentT: any }) {
   const containerRef = useRef(null);
+  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -454,10 +431,15 @@ function Process({ currentT }: { currentT: any }) {
           className="flex justify-center gap-4 md:gap-8 px-6 min-w-max"
         >
           {processSteps.map((step, idx) => (
-            <div key={idx} className="relative flex flex-col items-center group">
-              <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-[#C1A68D]/40 bg-[#FFFDF9] flex flex-col items-center justify-center z-10 transition-all duration-300 group-hover:border-[#0A2540] group-hover:scale-105 group-hover:shadow-xl">
-                <step.icon size={40} className="text-[#0A2540] mb-2 opacity-70 group-hover:opacity-100 transition-opacity" />
-                <span className="text-sm md:text-lg font-bold text-[#0A2540] text-center px-2">{step.name}</span>
+            <div 
+              key={idx} 
+              className="relative flex flex-col items-center group cursor-pointer"
+              onMouseEnter={() => setHoveredStep(idx)}
+              onMouseLeave={() => setHoveredStep(null)}
+            >
+              <div className={`w-32 h-32 md:w-48 md:h-48 rounded-full border-4 flex flex-col items-center justify-center z-10 transition-all duration-300 ${hoveredStep === idx ? 'border-[#0A2540] bg-[#0A2540] scale-110 shadow-xl' : 'border-[#C1A68D]/40 bg-[#FFFDF9] group-hover:border-[#0A2540] group-hover:scale-105'}`}>
+                <step.icon size={40} className={`mb-2 transition-colors duration-300 ${hoveredStep === idx ? 'text-white' : 'text-[#0A2540] opacity-70 group-hover:opacity-100'}`} />
+                <span className={`text-sm md:text-lg font-bold text-center px-2 transition-colors duration-300 ${hoveredStep === idx ? 'text-white' : 'text-[#0A2540]'}`}>{step.name}</span>
               </div>
               {/* Overlapping circles effect */}
               {idx < processSteps.length - 1 && (
@@ -466,6 +448,34 @@ function Process({ currentT }: { currentT: any }) {
             </div>
           ))}
         </motion.div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 mt-16 h-48 flex items-center justify-center text-center">
+        <AnimatePresence mode="wait">
+          {hoveredStep !== null ? (
+            <motion.div
+              key={hoveredStep}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-gray-700 text-base md:text-lg leading-relaxed whitespace-pre-line"
+            >
+              <h3 className="text-2xl font-bold text-[#0A2540] mb-4">{processSteps[hoveredStep].name}</h3>
+              {processSteps[hoveredStep].desc}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-gray-400 text-lg italic"
+            >
+              프로세스 단계에 마우스를 올려 상세 내용을 확인하세요.
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -607,12 +617,21 @@ function OurSolutions() {
   );
 }
 
+function CompanyWatermark() {
+  return (
+    <div className="fixed top-4 left-4 z-50 flex items-center bg-white/90 backdrop-blur-md px-4 py-3 rounded-full shadow-sm border border-gray-200/50">
+      <CosmaxLogo className="h-5 w-auto" textColor="#1A1A1A" />
+    </div>
+  );
+}
+
 export default function App() {
   const [lang, setLang] = useState<Lang>('ko');
   const currentT = t[lang];
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] font-sans selection:bg-[#C1A68D] selection:text-white">
+      <CompanyWatermark />
       <LanguageSwitcher lang={lang} setLang={setLang} />
       <Hero />
       <WhatIsOBM currentT={currentT} />
